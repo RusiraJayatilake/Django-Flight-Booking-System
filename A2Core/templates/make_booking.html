@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/make_booking.css' %}">
+        <title>Booking Form</title>
+    </head>
+    <body>
+        <h3>First Register as a Customer</h3>
+        <form method="POST" action="{% url 'customer_form' %}">
+            {%  csrf_token %}
+            <label>Customer Name</label>
+            <input placeholder="Enter Customer name" name="customer_name" required><br>
+            <label>Customer Email</label>
+            <input placeholder="Enter Customer email" name="customer_email" required><br>
+            <input type="submit" value="submit">
+
+        </form>
+
+        {% if customer %}
+            <p><b>Note: Enter this Customer ID to generate a booking</b></p>
+            <p>Your Customer ID: <b>{{ customer.customer_id }}</b></p>
+        {% endif %}
+
+        <hr>
+        
+        <h3>Make Bookings</h3>
+        <p>Enter your customer id and flight number to generate a booking</p>
+    
+        <p>Your selected flight number: <b>{{ request.GET.flight_id }}</b></p>
+        
+        <!-- Booking form -->
+        <form method="POST" action="{% url 'add_bookings' %}">
+            {%  csrf_token %}
+            <label>Customer ID</label>
+            <input placeholder="Enter Customer ID" name="customer_id" required><br>
+            <label>Flight Number</label>
+            <input placeholder="Enter Flight Number" name="flight_id" required><br>
+            <!-- <div name="book_ref"></div> -->
+            <input type="submit" value="submit">
+
+        </form>
+
+        <h3>Booking Details</h3>
+        {% if error %}
+            <p>{{ error }}</p>
+        {% else %}
+            <p>Booking Reference: <b>{{ booking_reference }}</b></p>
+            <span><b>Note: Remember this booking reference to search your flights</b></span>
+            <hr>
+            <h4>Customer Details</h4>
+            <p>Customer Name: {{ customer.customer_name }}</p>
+            <p>Customer Email: {{ customer.customer_email }}</p>
+            <hr>
+            <h4>Flight Details</h4>
+            <p>Flight ID: {{ flight.flight_id }}</p>
+            <p>Flight Name: {{ flight.flight_name }}</p>
+            <p>Departure Point: {{ flight.departure_point }}</p>
+            <p>Arrival Point: {{ flight.arrival_point }}</p>
+            <p>Departure Date and Time: {{ flight.departure_datetime }}</p>
+            <p>Arrival Date and Time: {{ flight.arrival_datetime }}</p>
+            <p>Price: ${{ flight.price }}</p>
+            <p>Seats Booked: {{ flight.seats_booked }}</p>
+            <p>Max Seats: {{ flight.max_seats }}</p>
+            <hr>
+            <p><b>Click here if you want to cancel this booking</b></p>
+            <form method="POST" action="{% url 'cancel_booking' %}">
+                {% csrf_token %}
+                <input type="hidden" name="booking_reference" value="{{ booking_reference }}">
+                <input type="submit" value="Cancel this Booking" class="cancel-btn" >
+            </form>
+            <hr>
+        {% endif %}
+
+        <a href="{% url 'main_page' %}">Go Back</a>
+        
+    </body>
+</html>

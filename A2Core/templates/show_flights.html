@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Flights</title>
+    </head>
+
+    <style>
+        .list-grid-container{
+            display: grid;
+            grid-template-columns: repeat(3, 10%);
+            grid-gap: 50px;
+        }
+        .flight_list{
+            list-style: none;
+            border: 1px solid #000;
+            border-radius: 10px;
+        }
+        .grid-item{
+            font-size: 15px;
+            padding: 10px;
+            margin:5px;
+        }
+
+        .book_btn{
+            padding: 5px;
+            margin:5px;
+        }
+    </style>
+
+    <body>
+        <h1>Flights</h1>
+        <p><b>Remember the flight number for you booking reference</b></p>
+        <ul class="list-grid-container">
+            {% for flight in flights %}
+                <li class="flight_list">
+                    <p class="grid-item">Flight Number: {{flight.flight_id}}</p>
+                    <p class="grid-item">Flight name: {{flight.flight_name}}</p>
+                    <p class="grid-item">Departing From: {{flight.departure_point}}</p>
+                    <p class="grid-item">Arrive To: {{flight.arrival_point}}</p>
+                    <p class="grid-item">Departure date: {{flight.departure_datetime}}</p>
+                    <p class="grid-item">Arrival date: {{flight.arrival_datetime}}</p>
+                    <p class="grid-item">Seats Booked: {{flight.seats_booked}}</p>
+                    <p class="grid-item">Total Seats: {{flight.max_seats}}</p>
+                    <p class="grid-item">Price: ${{flight.price}}</p>
+                    <input type="button" class="book_btn" value="Book Now">
+                </li>
+            {% empty %}
+                <p>No flighs available</p>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

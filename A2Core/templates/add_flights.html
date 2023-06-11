@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Register Flights</title>
+    </head>
+    <body>
+        <h1>Add Flights</h1>
+        <form method="post">
+            {%  csrf_token %}
+            <label>Flight Name</label>
+            <input type="text" name="flight_name" required><br>
+            <label>Depature Point</label>
+            <input type="text" name="departure_point" required><br>
+            <label>Arrival Point</label>
+            <input type="text" name="arrival_point" required><br>
+            <label>Departure Date</label>
+            <input type="datetime-local" name="departure_datetime" required><br>
+            <label>Arrival Date</label>
+            <input type="datetime-local" name="arrival_datetime" required><br>
+            <label>Price</label>
+            <input type="number" name="price" required><br>
+            <label>Number of Seats Booked</label>
+            <input type="number" name="seats_booked" required><br>
+            <label>Total Number of Seats</label>
+            <input type="number" name="max_seats" required><br>
+
+            <input type="submit" value="submit">
+
+        </form>
+        
+    </body>
+</html>

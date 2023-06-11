@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
+
+*{
+   font-family: 'Poppins', sans-serif;
+}
+
+.search_page:link, .search_page:visited {
+   background-color: #4caf50;
+   color: white;
+   padding: 4px 7px;
+   text-align: center;
+   text-decoration: none;
+   font-size: 15px;
+}
+ 
+.search_page:hover, .search_page:active {
+   background-color: rgb(20, 138, 20);
+}
+
+/* Search form css */
+.search-form {
+   display: flex;
+   align-items: center;
+   padding: 20px;
+   gap:10px;
+}
+  
+label {
+   margin-bottom: 5px;
+}
+  
+input[type="text"],
+.submit-button[type="submit"] {
+   padding: 5px;
+   width: 100px;
+}
+  
+.submit-button[type="submit"] {
+   background-color: #4caf50;
+   color: white;
+   cursor: pointer;
+}
+  
+.submit-button[type="submit"]:hover {
+   background-color: #45a049;
+}
+  
+  
+input[type="date"] {
+   background-position: right center;
+   background-repeat: no-repeat;
+   background-size: 20px;
+}
+  
+
+/* flights display */
+.container {
+    display: flex;
+    gap: 5%;
+}
+
+.flight_list {
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    list-style: none;
+}
+  
+.flight_list h3 {
+    margin-top: 0;
+}
+  
+.flight_list p {
+   margin-bottom: 10px;
+}
+  
+.flight_list .btn-book {
+   background-color: #007bff;
+   color: #fff;
+   padding: 5px 10px;
+   border-radius: 3px;
+   text-decoration: none;
+}
+  
+.flight_list .btn-book:hover {
+   background-color: #0056b3;
+}
+
+
+/* routes images */
+.image-container {
+  display: flex;
+  justify-content: space-between;
+}
+ 
+.image-container img {
+  width: 20%;
+  height: auto;
+}

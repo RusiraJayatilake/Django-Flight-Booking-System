@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+        <title>Flight Booking System</title>
+    </head>
+
+    <body>
+        <h1>Welcome to Flight Booking System</h1>
+        <hr>
+        <!-- <a href="{% url 'add_flights' %}">Add Flights</a><br> -->
+        <!-- <a href="{% url 'customer_form' %}">Register as a Customer</a><br> -->
+        <!-- <a href="{% url 'customer_list' %}">See all Customers</a><br> -->
+        <!-- <a href="{% url 'add_bookings' %}">Make a Booking</a><br> -->
+        <a href="{% url 'search_bookings' %}" class="search_page">Search for Booking</a><br>
+        <hr>
+
+        <!-- Background Image -->
+    
+
+        <h2>Search for flights</h2>
+        <form method="POST" action="{% url 'search_flights' %}" class="search-form">
+            {% csrf_token %}
+            <label>Departure Date</label><br>
+            <input type="date" name="departure_date" required><br>
+            <label>Arrival Date</label><br>
+            <input type="date" name="arrival_date" required><br>
+            <input type="submit" value="Search" class="submit-button"><br>
+        </form>
+        
+        <h3>Flights</h3>
+        <p><b>Note: Remember the flight number for you booking reference</b></p>
+        <ul class="container">
+            {% for flight in flights %}
+                <li class="flight_list">
+                    <p><b>Flight Number: {{flight.flight_id}}</b></p>
+                    <p>Flight name: {{flight.flight_name}}</p>
+                    <p>Departing From: {{flight.departure_point}}</p>
+                    <p>Arrive To: {{flight.arrival_point}}</p>
+                    <p>Departure date: {{flight.departure_datetime}}</p>
+                    <p>Arrival date: {{flight.arrival_datetime}}</p>
+                    <p>Seats Booked: {{flight.seats_booked}}</p>
+                    <p>Total Seats: {{flight.max_seats}}</p>
+                    <p>Price: ${{flight.price}}</p>
+                    <a href="{% url 'add_bookings' %}?flight_id={{ flight.flight_id }}" type="button" class="btn-book">Book Now</a>
+                    <!-- <input type="button" class="book_btn" value="Book Now"> -->
+                </li>
+            
+            {% endfor %}
+        </ul>
+        <hr>
+        <h2>Popular Routes</h2>
+        {% load static %}
+        <div class="img-container">
+            <img src="{% static 'img/route1.png' %}" class="image-1"/>
+            <img src="{% static 'img/route2.png' %}" class="image-1"/>
+            <img src="{% static 'img/route3.png' %}" class="image-1"/>
+            <img src="{% static 'img/route4.png' %}" class="image-1"/>
+            <img src="{% static 'img/route5.png' %}" class="image-1"/>
+        </div>
+
+    </body>
+</html>
