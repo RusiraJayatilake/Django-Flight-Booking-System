@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'A2Core.apps.A2CoreConfig',
+    'FlightTracking.apps.FlighttrackingConfig',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h4>Flight Details</h4>
+        {% for flight in results %}
+            <p>Flight Number: {{ flight.flight_id }}</p>
+            <p>Departure Airport: {{ flight.departure_point }}</p>
+            <p>Arrival Airport: {{ flight.arrival_point }}</p>
+            <!-- Display other flight information as needed -->
+        {% empty %}
+            <p>No results found.</p>
+        {% endfor %}
+        
+    </body>
+</html>

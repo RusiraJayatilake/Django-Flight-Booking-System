@@ -21,6 +21,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('A2Core.urls'))
+    path('', include('A2Core.urls')),
+    path('flighttrack/', include('FlightTracking.urls'))
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

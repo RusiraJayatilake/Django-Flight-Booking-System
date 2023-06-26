@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Main Page</title>
+    </head>
+    <body>
+        <h1>Welcome to Flight Tracking System</h1>
+
+        <h3>Search For Flight</h3>
+        <form method="POST" action="{% url 'search_flights_results' %}">
+            {% csrf_token %}
+            <!-- <h5>Search By Flight Reference</h5>
+            <input type="text" placeholder="Search by reference" name="search_ref" required><br> -->
+            <h5>Search By Routes</h5>
+            <input type="text" placeholder="Departing Point" name="departure_point" required><br>
+            <input type="text" placeholder="Arrival Point" name="arrival_point" required><br>
+            <input type="submit" value="Search" class="submit-button"><br>
+        </form>
+
+    </body>
+</html>
